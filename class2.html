@@ -181,14 +181,31 @@ var luckyThings = ['Rainbows', 7, 'Horseshoes'];
         </section>
         
         <section>
-          <h3>Loops and Arrays</h3>
-          Use a for loop to easily look at each item in an array:
-          <pre><code contenteditable class = "javascript">
-var rainbowColors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Indigo', 'Violet'];
-for (var i = 0; i < rainbowColors.length; i++) {
-  console.log(rainbowColors[i]);
-}
-          </code></pre>
+          <section>
+            <h3>Loops and Arrays</h3>
+            Use a for loop to easily look at each item in an array:
+            <pre><code contenteditable class = "javascript">
+  var rainbowColors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Indigo', 'Violet'];
+  for (var i = 0; i < rainbowColors.length; i++) {
+    console.log(rainbowColors[i]);
+  }
+            </code></pre>
+          </section>
+          <section>
+            <h3>Protip!</h3>
+            <span class="fragment">It's natural to think in collections, sets, groups.</span><br/>
+            <span class="fragment">Remember the "Danger" of infinite loops with while?</span><br/>
+            <span class="fragment">"for each" is better, and so to is "for in", but...</span><br/>
+            <span class="fragment">YOU are ultimately responsible for the loop, and bugs happen</span><br/>
+            <span class="fragment">Instead if your using ECMA 5 (IE9+) try ".forEach"</span><br/>
+            <pre class="fragment"><code contenteditable class = "javascript">
+  var rainbowColors = ['Red', 'Orange', 'Yellow', 'Green', 'Blue', 'Indigo', 'Violet'];
+  //No infinite loop, no indexing, can be any function.
+  rainbowColors.forEach(function (color) {
+    console.log(color);
+  });
+            </code></pre>
+          </section>
         </section>
         
         <!-- Exercise -->
@@ -376,7 +393,7 @@ for (var i = 0; i < rainbowColors.length; i++) {
         </section>
         
         <section>
-          <h3>DOM Interaction: Easier</h3>
+          <h3>DOM Interaction: ID</h3>
           <p class = "fragment blue">Finding every element on the page by siblings and children is time consuming!</p>
           <p class = "fragment">The document object also provides methods for finding DOM nodes without going one by one</p>
           <div class = "fragment">
@@ -388,22 +405,41 @@ for (var i = 0; i < rainbowColors.length; i++) {
 var img = document.getElementById('mainpicture');            
             </code></pre>
           </div>
+          Best practice of ECMA v1 (1997)
         </section>
         
         <section>
           <h3>DOM Interaction: Easier</h3>
           <div class = "fragment">
-            Find element by tag name (p, li, div, etc.)
-            <pre><code contenteditable class = "html">
-          &lt;li class="peanut">Charlie Brown&lt;/li>
-          &lt;li class="peanut">Linus van Pelt&lt;/li>
+            <span class="fragment">ID are supposed to be unique</span><br />
+            <span class="fragment">The utillity of giving everything a unique "id" runs out quick</span><br />
+            <span class="fragment">Other mehods were added to fix this problem in HTML5/ES5 (2009)</span><br />
             </code></pre>
-          <pre><code contenteditable class = "javascript">
-      var listItems = document.getElementsByTagName('li');
-      for (var i =0; i < listItems.length; i++) {
-        var listItem = listItems[i];
-      }
+            <pre class="fragment"><code contenteditable class = "html">
+  &lt;img id="mainpicture" src="http://girldevelopit.com/assets/pink-logo.png"&gt;
+  &lt;span class="javascript-tips"&gt;Learn with GDI&lt;/span&gt;
+            </code></pre>
+            <pre class="fragment"><code contenteditable class = "javascript">
+  var listItems = document.getElementsByTagName('img');
+  var classyItems = document.getElementsByClassName('javascript-tips');
+            </code></pre>
+            <span class="fragment">Better still, but more "uselike" than "usefull"</span><br />
+          </div>
+        </section>
+        
+        <section>
+          <h3>DOM Interaction: Easiest</h3>
+          <div class = "fragment">
+            <span class="fragment">There is an easier way</span><br />
+          <pre class="fragment"><code contenteditable class="javascript">
+      var elements = document.querySelectorAll('span.important');
           </code></pre>
+            <span class="fragment">Using query / style selectors</span><br />
+            <span class="fragment">Same pattern as jQuery (2006)</span><br />
+          <pre class="fragment"><code contenteditable class="javascript">
+      var elements = $('span.important');
+          </code></pre>
+            <span class="fragment">Very concice, and uses knowlege of style slectors.</span><br />
           </div>
         </section>
         
