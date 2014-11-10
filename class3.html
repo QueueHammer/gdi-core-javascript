@@ -58,6 +58,17 @@
           </div>
         </section>
         
+        <section>
+          <h3>Note #</h3>
+          <ul>
+            <li class="fragment">Slides are online: <a href="http://gdijs.talks.cmsmith.co">gdijs.talks.cmsmith.co</a></li>
+            <li class="fragment">Full source of slides and excercizes: <a href="https://github.com/QueueHammer/gdi-core-javascript">Git Hub</a></li>
+            <li class="fragment">The code projects for each set of slide has a JSBin to help start</a></li>
+            <li class="fragment">A comment on code formatting when we begin this excercise.</a></li>
+          </ul>
+        </section>
+              
+        
         <!-- What is a library-->
         <section>
           <h3>What is a library?</h3>
@@ -66,6 +77,33 @@
             <li class = "fragment">When you include a library, you can use all the functions in that library</li>
             <li class = "fragment">That means: <span class = "pink">you get to take advantage of other people's experience!</li>
             <li class = "fragment">And... <span class ="blue">Save time!</span></li>
+          </ul>
+        </section>
+        <section>
+          <h3>What might you want to use?</h3>
+          <ul>
+            <li class="fragment">
+              <h4>DOM Manipulation</h4>
+              <ul>
+                <li class="fragment"><a href="http://jquery.com/">jQuery</a></li>
+                <li class="fragment"><a href="http://d3js.org/">D3.js</a></li>
+              </ul>
+            </li>
+            <li class="fragment">
+              <h4>Working with collections</h4>
+              <ul>
+                <li class="fragment"><a href="http://underscorejs.org/">Underscore.js</a></li>
+                <li class="fragment"><a href="https://lodash.com/">Lo-Dash</a></li>
+              </ul>
+            </li>
+            <li class="fragment">
+              <h4>User Interaction</h4>
+              <ul>
+                <li class="fragment"><a href="http://getbootstrap.com/">Bootstrap</a></li>
+                <li class="fragment"><a href="http://css3pie.com/">CSS3Pie</a></li>
+                <li class="fragment"><a href="http://threejs.org/">Three.js</a></li>
+              </ul>
+            </li>
           </ul>
         </section>
         
@@ -89,6 +127,7 @@
             <li class = "fragment">jQuery empowers you to "write less, do more."</li>
             <li class = "fragment">Great <a href = "http://docs.jquery.com/" target = "_blank">documentation and tutorials</a></li>
             <li class = "fragment">Used by nearly 20 million(!) websites</li>
+            <li class = "fragment">It will make everything we did yesterday easier!</li>
           </ul>
         </section>
         
@@ -105,31 +144,45 @@
         
         <!-- Including jquery-->
         <section>
-          <h3>Including jQuery</h3>
-          Two ways to include jQuery on your page:
-          <div class = "fragment">
-            Download the library, store it locally:
-          <pre><code contenteditable class = "html">
-  &lt;head>
-    &lt;script type="text/javascript" src="jquery.js">&lt;/script>
-  &lt;/head>
-          </code></pre>
-          </div>
-          <div class = "fragment">
-          Include the the live library:
-          <pre><code contenteditable class = "html">
-  &lt;head>
-    &lt;script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js">
-    &lt;/script>
-  &lt;/head>
-          </code></pre>
-          </div>
-          <div class = "fragment">
-            Note: live code can change! It's always best to download
-          </div>
+          <h3>Linking to a library</h3>
+          <ul>
+            <li class="fragment">You link to a library by using the &lt;script&gt; tag</li>
+            <li class="fragment">&lt;script&gt; tags can go anywhere in the page; &lt;head&gt; or &lt;body&gt;</li>
+            <li class="fragment">They used to go in the &lt;head&gt; tag</li>
+            <li class="fragment">Now for performance they are placed at the end of &lt;body&gt;</li>
+            <li class="fragment">If you inspect your JSBin document, you will see that is where you script is being placed.</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Code</h3>
+          <p class="fragment">The script tag requires a "src" attribute. The value is the url to the file. It must have a closing tag</p>
+            <pre class="fragment"><code contenteditable class="html">
+&lt;html&gt;
+&lt;head&gt;
+  &lt;!-- links / meta / title tags --&gt;
+  &lt;script src=&quot;http://online.com/path/ToSome/Library.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- other content --&gt;
+  &lt;script src=&quot;http://online.com/path/ToSome/Library.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+            </code></pre> 
+        </section>
+
+        <section>
+          <h3>Local or Remote Scripts?</h3>
+          <p class="fragment">
+            Local give you absolute control of the file
+          </p>
+          <p class="fragment">
+            Remote means you don't have to keep a local copy. (Good for personal works)<br/>
+            <a href="https://cdnjs.com/">cdnjs</a> has hundreds you can use.
+          </p>
         </section>
         
         <!-- Selectors-->
+              <section>
         <section>
           <h3>jQuery Selectors</h3>
           <p>Remember <span class = "green">document.getElementById()</span> and <span class = "green">documet.getElementsByTagName()</span>? </p>
@@ -152,7 +205,31 @@ var images = $(".picture"); //All images with class picture
             </li>
           </ul>
         </section>
-      
+                
+        <section>
+          <h3>CSS Selectors</h3>
+          <ul>
+            <li class = "fragment">Multiple attributes on the same element
+            <pre><code contenteditable class = "javascript">
+//All 'div's with both 'favorite' and 'dinosaur' classes
+$('div.favorite.dinosaur')
+            </code></pre>
+            </li>
+            <li class = "fragment">Child elements
+            <pre><code contenteditable class = "javascript">
+//All direct children that are 'p' tags of 'body'
+$('body > p')
+            </code></pre>
+            </li>
+            <li class = "fragment">Any decendent
+            <pre><code contenteditable class = "javascript">
+//Any 'span' contained by elements with the 'accent' class
+$('.accent span')
+            </code></pre>
+            </li>
+          </ul>
+        </section>
+      </section>
         
         <!-- Actions-->
         <section>
@@ -212,6 +289,14 @@ var images = $(".picture"); //All images with class picture
   div.html('New html!');
             </code></pre>
           </div>
+          <div class = "fragment">
+            Better yet, just set the text!
+            <pre><code contenteditable class = "javascript">
+  var div = $('#results');
+  div.text();
+  div.text('Really its just text!');
+            </code></pre>
+          </div>
         </section>
         
         <!-- Append and prepend-->
@@ -242,10 +327,20 @@ var images = $(".picture"); //All images with class picture
           <h3>Creating new element</h3>
           <div class = "fragment">
             <pre><code contenteditable class = "javascript">
-    var newDiv = $('&lt;div>&lt;/div>');
+    var newDiv = $('&lt;div/&gt;');
             </code></pre>
           </div>
           <div class = "fragment">
+            Seriously. That's it!
+          </div>
+          <h3 class="fragment">What about attributes?</h3>
+          <div class = "fragment">
+            <pre><code contenteditable class = "javascript">
+    $('&lt;div/&gt;', {class:'selected', text:'The answer'});
+    //&lt;div class="selected"&gt;The answer&lt;/div&gt;
+            </code></pre>
+          </div>
+          <div class="fragment">
             Seriously. That's it!
           </div>
         </section>
@@ -253,8 +348,10 @@ var images = $(".picture"); //All images with class picture
         <!-- Exercise-->
         <section>
           <h3>Let's Develop It!</h3>
-          <p>Try to convert last week's DOM interaction into jQuery.</p>
-          <p>Don't forget to include jQuery in your html head!</p>
+          <p>Add the jQuery library to the page<br/>http://code.jquery.com/jquery-2.1.1.min.js</p>
+          <p>Create elements, update their content, and append them using jQuery</p>
+          <p>Getting started<br/><a href="http://jsbin.com/locole/latest/edit?html,js,output">http://jsbin.com/locole/latest</a></p>
+          
         </section>
         
         <!-- Document Ready-->
@@ -267,9 +364,9 @@ var images = $(".picture"); //All images with class picture
           <div class = "fragment">
             Document ready is a method called when the page is loaded
             <pre><code contenteditable class = "javascript">
-        $(document).ready(function(){
-          
-        });
+$( document ).ready( function () { //do stuff... } ) //Old school
+$().ready( function () { /*do stuff...*/ } )         //Not recommended
+$( function () { /*do stuff...*/ } )                 //Concise
             </code></pre>
           </div>
           <div class = "fragment left-align">
@@ -293,13 +390,13 @@ var images = $(".picture"); //All images with class picture
         <section>
           <h3>Handling events</h3>
       <pre><code contenteditable class = "javascript">
-  $(selector).mouseenter(function(){
+  $(selector).on('mouseenter', function(){
     //code when the mouse enters
   })
       </code></pre>
           <div class = "fragment">
       <pre><code contenteditable class = "javascript">
-  $('.box').mouseenter(function(){
+  $('.box').on('mouseenter', function(){
     $(this).css('background-color', 'purple')
   })
       </code></pre>
@@ -314,42 +411,22 @@ var images = $(".picture"); //All images with class picture
           <h3>Handling event examples</h3>
           <div class = "fragment">
             <pre><code contenteditable class = "javascript">
-      $('.box').mouseenter(function(){
+      $('.box').on('mouseenter', function(){
         $(this).css('background-color', 'purple')
-      })
+      });
             </code></pre>
           </div>
           <div class = "fragment">
           <pre><code contenteditable class = "javascript">
-      $('.box').mouseleave(function(){
+      $('.box').on('mouseleave', function(){
         $(this).css('background-color', 'orange')
-      })
+      });
           </code></pre>
           </div>
           <div class = "fragment">
           <pre><code contenteditable class = "javascript">
-      $('.box').click(function(){
+      $('.box').on('click', function(){
         $(this).css('background-color', 'green')
-      })
-          </code></pre>
-          </div>
-        </section>
-        
-        <section>
-          <h3>Combining events</h3>
-          <p>If you want multiple events to happen on the same element, you should use the bind method</p>
-          <div class = "fragment">
-          <pre><code contenteditable class = "javascript">
-      $('.box').bind({
-        click: function() {
-          $(this).css('background-color', 'green')
-        },
-        mouseenter: function() {
-          $(this).css('background-color', 'purple')
-        },
-        mouseleave: function(){
-          $(this).css('background-color', 'orange')
-        }
       });
           </code></pre>
           </div>
@@ -451,9 +528,10 @@ var images = $(".picture"); //All images with class picture
         <section>
           <h3>Let's Develop It</h3>
           <ul>
-            <li>Choose one (or all!) of your functions made so far</li>
-            <li>i.e. lifetime supply, favorite things, or my friends</li>
+            <li>Choose one (calculate) of your functions made so far</li>
             <li>Create a form to send dynamic data to the function when you click the button</li>
+            <li>i.e. lifetime supply, favorite things, or my friends</li>
+            <li>Put id's or classes on your form elements so you can select them through jquery</li>
             <li>Don't forget to add parameters to your existing functions!</p>
             <li>This is a little harder than all the other exercises.</li>
             <li>Be creative!</li>

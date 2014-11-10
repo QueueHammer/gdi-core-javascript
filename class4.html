@@ -57,6 +57,97 @@
           </ul>
           </div>
         </section>
+              
+        <section>
+          <h3>Easier UI</h3>
+          <ul>
+            <li class="fragment">jQuery is powerful but binding the form started to get complicated.</li>
+            <li class="fragment">With larger pages that only grows.</li>
+            <li class="fragment">When trying to keep data in inputs in sync with you script there needs to be some sort of binding.</li>
+            <li class="fragment">jQuery can do this but you have to wire it all up your self</li>
+            <li class="fragment">Also with all the .HTML assignments you start to write the layout in your code. Yuck!</li>
+          </ul>
+        </section>
+              
+        <section>
+          <h3>Angular.js</h3>
+          <ul>
+            <li class="fragment">Angular was built by Google to allow designers a way to interact with the layout</li>
+            <li class="fragment">It's a simple concept but it's use has grown exponentially.</li>
+            <li class="fragment">All the information for layout goes directly into the page, no markup in code!</li>
+            <li class="fragment">Actions are added to the page though "directives"</li>
+            <li class="fragment">They add features to the elements in the page</li>
+          </ul>
+        </section>
+              
+        <section>
+          <h3>ng-model and expressions</h3>
+          <ul class="fragment">
+            <li class="fragment">This is a directive that binds an input to a variable</li>
+          </ul>
+            <pre class="fragment"><code contenteditable class = "html">
+  &lt;input type="text" ng-model="name"/&gt;
+  &lt;br/&gt;
+  My name is: {{name}}
+          	</code></pre>
+          <ul class="fragment">
+            <li class="fragment">Notice the {{x}} in the markup</li>
+            <li class="fragment">This is an expression and it allows you to use values you have created</li>
+            <li class="fragment">You can also write calculations {{daysInYear * favoritesFoodPerDay}}</li>
+          </ul>
+        </section>
+        
+        <!-- Exercise-->
+        <section>
+          <h3>Let's Develop It!</h3>
+          <ul>
+            <li>Let's redo our food calculator, using inputs and expressions in the page</li>
+            <li><a href="http://jsbin.com/kayoru/latest/edit?html,output">http://jsbin.com/kayoru/latest/edit?html,output</a></li>
+          </ul>
+        </section>
+              
+        <section>
+          <h3>ng-repeat</h3>
+          <ul class="fragment">
+            <li class="fragment">Since we alwyas work with collections there is a directive for that</li>
+            <li class="fragment">This directive will create a copy of the element you tag with it for each item in the list.</li>
+          </ul>
+            <pre class="fragment"><code contenteditable class = "html">
+    &lt;ul&gt;
+      &lt;li ng-repeat=&quot;friend in friends&quot;&gt;&lt;/li&gt;
+      {{friend}}
+    &lt;/ul&gt;
+          	</code></pre>
+          <ul class="fragment">
+            <li class="fragment">just like in our .forEach the value in the list is passed to each element</li>
+          </ul>
+        </section>
+              
+        <section>
+          <h3>ng-controller</h3>
+          <ul class="fragment">
+            <li class="fragment">Controllers are how you bind the data to the page from script</li>
+            <li class="fragment">The controller is a function in your code that you call from the page</li>
+            <li class="fragment">The function has a $scope parameter that is accessable by your expressions</li>
+          </ul>
+            <pre class="fragment"><code contenteditable class = "html">
+    &lt;div ng-controller="ctrl"&gt;
+          	</code></pre>
+            <pre class="fragment"><code contenteditable class = "javascript">
+    function ctrl($script) {
+    $script.myValue = 5;
+    }
+          	</code></pre>
+        </section>
+        
+        <!-- Exercise-->
+        <section>
+          <h3>Let's Develop It!</h3>
+          <ul>
+            <li>Let's redo the friends list using a controller and ng-repeat</li>
+            <li><a href="http://jsbin.com/cumuki/latest/edit?html,js,output">http://jsbin.com/cumuki/latest/edit?html,js,output</a></li>
+          </ul>
+        </section>
         
         <section>
           <h3>Warning</h3>
@@ -131,6 +222,7 @@
             <li>Twitter (<a href = "https://dev.twitter.com/" target = "_blank">https://dev.twitter.com/</a>)</li>
             <li>Meetup (<a href = "http://www.meetup.com/meetup_api/" target = "_blank">http://www.meetup.com/meetup_api/</a>)</li>
             <li>FourSquare (<a href = "https://developer.foursquare.com/">https://developer.foursquare.com/</a>)</li>
+            <li>Reddit (<a href = "http://www.reddit.com/dev/api">http://www.reddit.com/dev/api</a>)</li>
         </section>
         
         <!-- What is JSON-->
@@ -141,6 +233,14 @@
             <li class = "fragment">Format for data returned from APIs</li>
             <li class = "fragment">You've seen it before!</li>
             <li class = "fragment">JavaScript objects</li>
+          </ul>
+        </section>
+        <section>
+          <h3>What is JSONP?</h3>
+          <ul>
+            <li class = "fragment">Unless the server is configured to allow it, you can't access JSON on another domain</li>
+            <li class = "fragment">But, there is a pattern for that.</li>
+            <li class = "fragment">JSONP adds the response as a script tag in the page</li>
           </ul>
         </section>
         
@@ -155,33 +255,10 @@
            <li class = "fragment">More secure for you -- people can't pretend to be your website</li>
           </ul>
         </section>
-        
-        <!-- Meetup-->
         <section>
-          <h3>Meetup API</h3>
-          <p>We will be using the Meetup API</p>
-          <p><a href = "http://www.meetup.com/meetup_api/" target = "_blank">Documentation</a></p>
-          <img src = "images/meetup.png" />
-        </section>
-        
-        <section>
-          <h3>Meetup API</h3>
-          <p>We will be finding interesting Meetups near us</p>
-          <p><a href = "http://www.meetup.com/meetup_api/docs/2/open_events/" target = "_blank">Open Events</a></p>
-          <img src = "images/meetup_open.png"/>
-        </section>
-        
-        <section>
-          <h3>Meetup API</h3>
-          <p>Try it in the meetup console</p>
-          <p><a href = "http://www.meetup.com/meetup_api/console/?path=/2/open_events" target = "_blank">Open Events Console</a></p>
-          <img src = "images/meetup_console.png"/>
-        </section>
-        
-        <section>
-          <h3>Meetup API</h3>
-          <p>Try it in the meetup console</p>
-          <img src = "images/meetup_results.png"/>
+         <h3>We dont need no stinking key</h3>
+         <p>Because we are going to use Reddit's API!</p>
+          <a href = "http://www.reddit.com/dev/api">http://www.reddit.com/dev/api</a>
         </section>
         
         <!-- jQuery Ajax-->
@@ -301,60 +378,25 @@
         <section>
           <h3>Let's Develop It!</h3>
           <ul>
-            <li>Create a new div with the id "events"</li>
-            <li>Create a new function in your javascript that calls <a href = "http://www.meetup.com/meetup_api/docs/2/open_events/" target = "_blank">Meetup open events</a> method</li>
-            <li>Add parameters such as city, state or lat, lon to find meetups near you</li>
-            <li>Add a parameter such as category or topic to find meetups that you would be interested in</li>
-            <li>For now, just look at the results in the console.log()</li>
-            <li>Call this new function in document ready</li>
+            <li>Use the example code to show content from /r/aww/</li>
+            <li>Create a link to select other sub reddits: e.g. funny, AdviceAnimals</li>
+            <li><a href="http://jsbin.com/kikogi/latest/edit">http://jsbin.com/kikogi/latest</a></li>
           </ul>
         </section>
-        
-        <section>
-          <h3>Let's Develop It!</h3>
-          <img src = "images/console.png"/>
-        </section>
-        
-        <section>
-          <h3>Let's Develop It!</h3>
-          <ul>
-            <li>Create a new function that can parse results.</li>
-            <li>Remember that the results will be an array of objects</li>
-            <li>Loop through your results</li>
-            <li>For each result, create a new div</li>
-            <li>Get the name, description, group name, and url of each event</li>
-            <li>Append them to your new div</li>
-            <li>Append the new div to the div "events"</li>
-          </ul>
-        </section>
-        
-        <section>
-          <h3>Let's Develop It!</h3>
-          <ul>
-            <li>Create a form for users to enter in their location and a topic of their choosing</li>
-            <li>On submit, call the same Meetup open events method, but with the user's values</li>
-          </ul>
-        </section>
-        
-        <section>
-          <h3>Bonus</h3>
-          <p class = "blue">Still have time? Can't stop learning?</p>
-          <div class = "left-align">
-            <p>One of the best things about jQuery is the developer community</p>
-            <p>They love to build!</p>
-            <p>Check out some great plugins:</p>
-            <ul>
-              <li><a href = "http://jqueryui.com/" target = "_blank">jQuery UI</a> -- accordions, drag and drop, resize, sort</li>
-              <li><a href = "http://leandrovieira.com/projects/jquery/lightbox/" target = "_blank">jQuery Lightbox</a> -- Pop up gallery of images!</li>
-              <li><a href = "http://www.jqueryplugins.com/" target = "_blank">And so many more!</a></li>
-            </ul>
-          </div>
-        </section>
+      
         <!-- -->
         <section>
           <h2>Questions?</h2>
           <div style = "font-size:1200%; height:100%; margin-top:40%" class ="blue">?
             <div class ="clear"></div></div>
+        </section>
+          
+        <section>
+          <h3>Give away!</h3>
+          <span class="fragment">What is the current version of JavaScript?</span>
+          <span class="fragment">v5.1</span>
+          <span class="fragment">What is the name for the next version of JavaScript?</span>
+          <span class="fragment">Harmony</span>
         </section>
 			</div>
   		<footer>
